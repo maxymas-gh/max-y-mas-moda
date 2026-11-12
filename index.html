@@ -5,53 +5,65 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MAX & MÁS MODA | Proyecto de Promoción de Portafolio</title>
 <style>
-:root{--navy:#071a3d;--blue:#1557c0;--sky:#eaf2ff;--ink:#12213a;--muted:#61708a;--white:#fff}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#f6f8fc}
-header{position:sticky;top:0;z-index:10;background:rgba(7,26,61,.96);backdrop-filter:blur(12px);color:#fff;padding:14px 5vw;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{font-weight:900;letter-spacing:.08em}.brand small{display:block;font-size:10px;letter-spacing:.18em;opacity:.7;margin-top:3px}
-nav a{color:#fff;text-decoration:none;margin-left:18px;font-size:14px;opacity:.9}
-.hero{min-height:72vh;display:grid;place-items:center;padding:80px 6vw;background:linear-gradient(135deg,#071a3d 0%,#123d80 55%,#2d76d8 100%);color:#fff}
-.hero-inner{max-width:1050px;width:100%}.eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:800;opacity:.8}
-h1{font-size:clamp(42px,8vw,92px);line-height:.92;margin:18px 0 20px;max-width:850px}
-.hero p{font-size:clamp(18px,2.2vw,25px);max-width:760px;line-height:1.5;color:#e8f0ff}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:999px;text-decoration:none;font-weight:800}
-.btn.primary{background:#fff;color:var(--navy)}.btn.secondary{border:1px solid rgba(255,255,255,.35);color:#fff}
-main{max-width:1100px;margin:auto;padding:70px 5vw}
-section{margin-bottom:70px}h2{font-size:34px;margin:0 0 14px;color:var(--navy)}.lead{color:var(--muted);font-size:18px;line-height:1.7;max-width:820px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:28px}
-.card{background:#fff;border:1px solid #e4e9f2;border-radius:22px;padding:26px;box-shadow:0 12px 35px rgba(10,35,75,.07)}
-.card h3{margin:0 0 9px;color:var(--blue)}.card p{margin:0;color:var(--muted);line-height:1.65}
-.timeline{border-left:3px solid #b9cdf0;margin:28px 0 0 10px;padding-left:25px}.step{margin:0 0 25px}.step b{color:var(--blue)}
-.notice{background:var(--sky);border:1px solid #cfe0ff;border-radius:22px;padding:25px;line-height:1.6}
-footer{background:var(--navy);color:#fff;text-align:center;padding:35px 20px;opacity:.98}
-@media(max-width:700px){nav{display:none}.hero{min-height:65vh;padding:60px 7vw}main{padding:50px 6vw}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#151515;color:#fff;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:20;height:64px;padding:0 22px;display:flex;align-items:center;justify-content:space-between;background:rgba(7,7,7,.94);backdrop-filter:blur(14px);border-bottom:1px solid #333}
+.brand{font-weight:900;letter-spacing:.08em;font-size:15px}.brand span{display:block;font-size:9px;letter-spacing:.18em;color:#aaa;margin-top:3px}
+.actions{display:flex;gap:9px}.btn{border:1px solid #555;background:#242424;color:#fff;border-radius:999px;padding:9px 15px;text-decoration:none;font-weight:700;font-size:12px;cursor:pointer}.btn:hover{background:#333}
+#progress{position:fixed;top:63px;left:0;height:3px;background:#fff;width:0;z-index:30;transition:width .08s}
+main{padding:26px 14px 80px}.intro{max-width:1050px;margin:0 auto 24px;padding:20px 8px}.intro h1{font-size:clamp(30px,5vw,58px);margin:0 0 8px}.intro p{margin:0;color:#aaa;line-height:1.6}
+#pdf{max-width:1100px;margin:auto}.page{position:relative;margin:0 auto 18px;max-width:1024px;background:#fff;box-shadow:0 8px 35px rgba(0,0,0,.35);overflow:hidden}.page canvas{display:block;width:100%;height:auto}.num{position:absolute;right:10px;top:10px;background:rgba(0,0,0,.7);color:#fff;padding:5px 9px;border-radius:999px;font-size:10px}
+.loading{text-align:center;padding:60px;color:#bbb}.error{max-width:800px;margin:40px auto;padding:25px;border:1px solid #663838;background:#241717;border-radius:16px;color:#ffdede}
+footer{text-align:center;color:#777;padding:35px;font-size:12px}
+.modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.8);align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.box{background:#fff;color:#111;border-radius:20px;padding:25px;text-align:center;max-width:360px;width:100%}.box h2{margin-top:0}.box p{font-size:12px;color:#666}.qr{display:flex;justify-content:center;margin:18px}.close{border:0;background:#111;color:#fff;padding:10px 18px;border-radius:999px;cursor:pointer}
+@media(max-width:600px){header{padding:0 12px}.brand{font-size:12px}.brand span{font-size:7px}.btn{padding:8px 11px;font-size:10px}.btn.hide-mobile{display:none}main{padding:12px 5px 50px}.page{margin-bottom:8px}}
 </style>
 </head>
 <body>
-<header><div class="brand">MAX & MÁS MODA<small>PROYECTO DE PROMOCIÓN DE PORTAFOLIO</small></div><nav><a href="#proyecto">Proyecto</a><a href="#fases">Fases</a><a href="#equipo">Equipo</a></nav></header>
-<section class="hero"><div class="hero-inner">
-<div class="eyebrow">Portafolio digital · Proyecto formativo</div>
-<h1>MAX & MÁS MODA</h1>
-<p>Presentación digital del proyecto de promoción de portafolio, organizada para consulta desde computador o celular y preparada para compartirse mediante un enlace público y código QR.</p>
-<div class="actions"><a class="btn primary" href="#proyecto">Ver proyecto</a><a class="btn secondary" href="#fases">Explorar fases</a></div>
-</div></section>
+<header>
+<div class="brand">MAX & MÁS MODA<span>PROYECTO DE PROMOCIÓN DE PORTAFOLIO</span></div>
+<div class="actions"><a class="btn hide-mobile" href="#pdf">Ver proyecto</a><button class="btn" onclick="openQR()">QR</button><a class="btn" href="documento.pdf" target="_blank">PDF</a></div>
+</header>
+<div id="progress"></div>
 <main>
-<section id="proyecto"><h2>El proyecto</h2><p class="lead">El material reúne el desarrollo documental del proyecto Max y Más Moda: reuniones, entrevistas, planeación, gestión de datos, contacto asesor-cliente, actividades de marketing digital y evidencias del proceso.</p>
-<div class="grid">
-<div class="card"><h3>Diagnóstico</h3><p>Identificación de necesidades de promoción, contacto con clientes y oportunidades de fortalecimiento digital.</p></div>
-<div class="card"><h3>Marketing digital</h3><p>Planeación de acciones de promoción y uso de canales digitales para apoyar el portafolio.</p></div>
-<div class="card"><h3>Gestión comercial</h3><p>Organización de bases de datos, contacto asesor-cliente y seguimiento de las actividades.</p></div>
-<div class="card"><h3>Evidencias</h3><p>Registro documental del trabajo realizado durante las diferentes fases del proyecto formativo.</p></div>
-</div></section>
-<section id="fases"><h2>Ruta del proyecto</h2><div class="timeline">
-<div class="step"><b>Fase I · Preparación</b><br>Selección y conocimiento de la empresa, entrevista, organización del proyecto y estructuración de guiones.</div>
-<div class="step"><b>Fase II · Contacto asesor-cliente</b><br>Inicio de llamadas, contacto con clientes y registro de las gestiones realizadas.</div>
-<div class="step"><b>Fase III · Gestión y análisis</b><br>Depuración de bases de datos, elaboración de gráficas y organización de resultados.</div>
-<div class="step"><b>Promoción de portafolio</b><br>Integración del trabajo en una presentación digital para facilitar su consulta y socialización.</div>
-</div></section>
-<section id="equipo"><h2>Equipo de trabajo</h2><div class="card"><p>El documento registra la participación de aprendices del Centro de Comercio Regional Antioquia vinculados al proyecto Max y Más Moda.</p></div></section>
-<section><div class="notice"><strong>Documento fuente:</strong> el proyecto original contiene 272 páginas de documentación. Esta versión web funciona como portada y navegación pública del proyecto. El documento completo se conserva como fuente original.</div></section>
+<section class="intro">
+<h1>MAX & MÁS MODA</h1>
+<p>Proyecto de Promoción de Portafolio · Documento completo en formato web.</p>
+</section>
+<div id="pdf"><div class="loading">Cargando el proyecto completo…</div></div>
 </main>
-<footer>MAX & MÁS MODA · Proyecto de Promoción de Portafolio</footer>
-</body></html>
+<footer>MAX & MÁS MODA · Documento completo · Compatible con celular, computador y código QR</footer>
+<div class="modal" id="modal" onclick="if(event.target===this)closeQR()"><div class="box"><h2>Compartir proyecto</h2><p>Escanea este código para abrir esta página.</p><div class="qr" id="qr"></div><button class="close" onclick="closeQR()">Cerrar</button></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs" type="module"></script>
+<script type="module">
+import * as pdfjsLib from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs";
+pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs";
+const container=document.getElementById("pdf");
+async function loadPDF(){
+ try{
+  const pdf=await pdfjsLib.getDocument("documento.pdf").promise;
+  container.innerHTML="";
+  for(let i=1;i<=pdf.numPages;i++){
+   const page=await pdf.getPage(i);
+   const viewport=page.getViewport({scale:1.5});
+   const div=document.createElement("div");div.className="page";
+   const canvas=document.createElement("canvas");
+   canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);
+   div.appendChild(canvas);
+   const badge=document.createElement("div");badge.className="num";badge.textContent=i+" / "+pdf.numPages;div.appendChild(badge);
+   container.appendChild(div);
+   await page.render({canvasContext:canvas.getContext("2d"),viewport}).promise;
+  }
+ }catch(e){
+  container.innerHTML='<div class="error"><strong>No se pudo cargar el documento.</strong><br><br>Asegúrate de que <code>documento.pdf</code> esté en la raíz del repositorio de GitHub junto a <code>index.html</code>.<br><br>'+e.message+'</div>';
+ }
+}
+loadPDF();
+window.addEventListener("scroll",()=>{const h=document.documentElement.scrollHeight-innerHeight;document.getElementById("progress").style.width=(h>0?(scrollY/h)*100:0)+"%"});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+function openQR(){document.getElementById("modal").classList.add("open");document.getElementById("qr").innerHTML="";new QRCode(document.getElementById("qr"),{text:location.href,width:210,height:210});}
+function closeQR(){document.getElementById("modal").classList.remove("open")}
+</script>
+</body>
+</html>
