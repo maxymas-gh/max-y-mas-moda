@@ -2,78 +2,82 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">\n<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">\n<meta http-equiv="Pragma" content="no-cache">\n<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Proyecto de Promoción de Portafolio - Max & Más Moda">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>MAX & MÁS MODA | Proyecto completo</title>
 <style>
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#171717;color:#fff;font-family:Arial,Helvetica,sans-serif}
-header{position:sticky;top:0;z-index:20;height:62px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,8,8,.96);border-bottom:1px solid #333}
+header{position:sticky;top:0;z-index:20;min-height:62px;padding:8px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(8,8,8,.96);border-bottom:1px solid #333}
 .brand{font-weight:900;letter-spacing:.08em;font-size:14px}.brand small{display:block;font-size:8px;letter-spacing:.16em;color:#aaa;margin-top:3px}
-.buttons{display:flex;gap:8px}.btn{border:1px solid #555;background:#252525;color:#fff;border-radius:22px;padding:8px 13px;text-decoration:none;font-weight:700;font-size:11px;cursor:pointer}
+.buttons{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid #555;background:#252525;color:#fff;border-radius:22px;padding:8px 13px;text-decoration:none;font-weight:700;font-size:11px;cursor:pointer}
 #bar{position:fixed;top:61px;left:0;height:3px;background:#fff;width:0;z-index:30}
 main{padding:18px 8px 70px}.intro{max-width:1100px;margin:0 auto 18px;padding:14px 8px}.intro h1{margin:0 0 5px;font-size:clamp(26px,5vw,50px)}.intro p{margin:0;color:#aaa}
-#pages{max-width:1100px;margin:auto}.page{position:relative;background:#fff;margin:0 auto 14px;min-height:120px;box-shadow:0 5px 25px #0008;overflow:hidden}.page canvas{display:block;width:100%;height:auto}.placeholder{height:180px;display:grid;place-items:center;color:#888;background:#f4f4f4}.tag{position:absolute;right:8px;top:8px;background:#000b;color:#fff;border-radius:20px;padding:4px 8px;font-size:10px;z-index:2}
+#pages{max-width:1100px;margin:auto}.page{position:relative;background:#fff;margin:0 auto 14px;overflow:hidden;box-shadow:0 5px 25px #0008}.page canvas{display:block;width:100%;height:auto}.placeholder{display:grid;place-items:center;color:#888;background:#f4f4f4;min-height:180px}.tag{position:absolute;right:8px;top:8px;background:#000b;color:#fff;border-radius:20px;padding:4px 8px;font-size:10px;z-index:2}
 .loading{text-align:center;padding:60px;color:#aaa}.error{max-width:800px;margin:30px auto;background:#2a1717;border:1px solid #714141;border-radius:12px;padding:22px;color:#ffdede;line-height:1.5}
 footer{text-align:center;color:#777;padding:30px;font-size:11px}
-.modal{display:none;position:fixed;inset:0;z-index:100;background:#000c;align-items:center;justify-content:center}.modal.open{display:flex}.box{background:#fff;color:#111;border-radius:18px;padding:22px;text-align:center;width:320px}.qr{display:flex;justify-content:center;margin:15px}.close{background:#111;color:#fff;border:0;border-radius:20px;padding:9px 18px}
+.modal{display:none;position:fixed;inset:0;z-index:100;background:#000c;align-items:center;justify-content:center}.modal.open{display:flex}.box{background:#fff;color:#111;border-radius:18px;padding:22px;text-align:center;width:min(320px,calc(100vw - 32px))}.qr{display:flex;justify-content:center;margin:15px}.close{background:#111;color:#fff;border:0;border-radius:20px;padding:9px 18px}
+@media(max-width:600px){header{padding:8px 10px}.brand{font-size:11px}.brand small{font-size:7px}.btn{font-size:10px;padding:7px 10px}main{padding-left:4px;padding-right:4px}.page{margin-bottom:8px}}
 </style>
 </head>
 <body>
 <header>
 <div class="brand">MAX & MÁS MODA<small>PROYECTO DE PROMOCIÓN DE PORTAFOLIO</small></div>
-<div class="buttons"><a class="btn" href="#pages">PROYECTO</a><button class="btn" onclick="openQR()">QR</button><a class="btn" href="documento.pdf" target="_blank">PDF</a></div>
+<div class="buttons"><a class="btn" href="#pages">PROYECTO</a><button class="btn" onclick="openQR()">QR</button><a class="btn" href="documento.pdf" target="_blank" rel="noopener">PDF</a></div>
 </header>
 <div id="bar"></div>
 <main>
-<div class="intro"><h1>MAX & MÁS MODA</h1><p>Proyecto completo · 272 páginas · Vista web continua</p></div>
+<div class="intro"><h1>MAX & MÁS MODA</h1><p>Proyecto completo · Vista web continua</p></div>
 <div id="pages"><div class="loading">Cargando el documento original…</div></div>
 </main>
 <footer>MAX & MÁS MODA · Proyecto de Promoción de Portafolio</footer>
 <div id="modal" class="modal" onclick="if(event.target===this)closeQR()"><div class="box"><h2>Compartir</h2><p>Escanea para abrir este proyecto.</p><div id="qr" class="qr"></div><button class="close" onclick="closeQR()">Cerrar</button></div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
-const root=document.getElementById("pages");
-const pdfUrl="documento.pdf";
+const root=document.getElementById("pages"),pdfUrl="documento.pdf";
+let pdf=null;const rendered=new Map();
+function makePage(i){
+ const el=document.createElement("section");el.className="page";el.dataset.page=i;
+ const tag=document.createElement("div");tag.className="tag";tag.textContent=i;
+ const holder=document.createElement("div");holder.className="placeholder";holder.textContent="Página "+i;
+ el.append(holder,tag);root.appendChild(el);return el;
+}
+async function renderPage(el){
+ const n=Number(el.dataset.page);if(rendered.has(n)||!pdf)return;
+ try{
+  const page=await pdf.getPage(n),base=page.getViewport({scale:1});
+  const maxCssWidth=Math.min(1100,window.innerWidth-16),scale=Math.min(1.55,maxCssWidth/base.width);
+  const dpr=Math.min(window.devicePixelRatio||1,1.5),vp=page.getViewport({scale:scale*dpr});
+  const canvas=document.createElement("canvas");canvas.width=Math.ceil(vp.width);canvas.height=Math.ceil(vp.height);
+  canvas.style.width="100%";canvas.style.height="auto";canvas.setAttribute("aria-label","Página "+n);
+  await page.render({canvasContext:canvas.getContext("2d",{alpha:false}),viewport:vp}).promise;
+  const holder=el.querySelector(".placeholder");if(holder)holder.replaceWith(canvas);rendered.set(n,canvas);
+ }catch(e){const holder=el.querySelector(".placeholder");if(holder)holder.textContent="No se pudo mostrar la página "+n;}
+}
+function unloadFarPages(center){
+ for(const [n,canvas] of rendered){if(Math.abs(n-center)>6){
+  const holder=document.createElement("div");holder.className="placeholder";holder.textContent="Página "+n;
+  canvas.replaceWith(holder);rendered.delete(n);
+ }}
+}
 async function start(){
  try{
-  const pdf=await pdfjsLib.getDocument({url:pdfUrl}).promise;
-  root.innerHTML="";
-  const jobs=[];
-  for(let i=1;i<=pdf.numPages;i++){
-   const el=document.createElement("section");el.className="page";
-   const tag=document.createElement("div");tag.className="tag";tag.textContent=i+" / "+pdf.numPages;
-   const holder=document.createElement("div");holder.className="placeholder";holder.textContent="Página "+i;
-   el.append(holder,tag);root.appendChild(el);
-   jobs.push({el,i,pdf});
-  }
-  const io=new IntersectionObserver(entries=>{
-   entries.forEach(e=>{if(e.isIntersecting&&!e.target.dataset.rendered){render(e.target,Number(e.target.dataset.page));}});
-  },{rootMargin:"1200px 0px"});
-  jobs.forEach(j=>{j.el.dataset.page=j.i;io.observe(j.el)});
- }catch(err){
-  root.innerHTML='<div class="error"><b>No se pudo cargar documento.pdf.</b><br>El archivo sí debe estar en la raíz del repositorio. Error: '+String(err.message||err)+'</div>';
- }
+  pdf=await pdfjsLib.getDocument({url:pdfUrl,cache:"no-store"}).promise;root.innerHTML="";
+  const pages=Array.from({length:pdf.numPages},(_,i)=>makePage(i+1));
+  document.querySelector(".intro p").textContent="Proyecto completo · "+pdf.numPages+" páginas · Vista web continua";
+  const io=new IntersectionObserver(async entries=>{
+   for(const e of entries)if(e.isIntersecting){await renderPage(e.target);unloadFarPages(Number(e.target.dataset.page));}
+  },{rootMargin:"1400px 0px"});
+  pages.forEach(p=>io.observe(p));
+ }catch(err){root.innerHTML='<div class="error"><b>No se pudo cargar el documento.</b><br>Comprueba que documento.pdf esté disponible. Error: '+String(err.message||err)+'</div>';}
 }
-async function render(el,num){
- el.dataset.rendered="1";
- const page=await window._pdf.getPage(num).catch(()=>null);
- if(!page)return;
- const max=1050, base=page.getViewport({scale:1});
- const scale=Math.min(1.5,max/base.width);
- const vp=page.getViewport({scale});
- const canvas=document.createElement("canvas");
- canvas.width=Math.ceil(vp.width);canvas.height=Math.ceil(vp.height);
- el.querySelector(".placeholder").replaceWith(canvas);
- await page.render({canvasContext:canvas.getContext("2d"),viewport:vp}).promise;
-}
-(async()=>{try{window._pdf=await pdfjsLib.getDocument({url:pdfUrl}).promise;root.innerHTML="";
- for(let i=1;i<=window._pdf.numPages;i++){const el=document.createElement("section");el.className="page";el.dataset.page=i;const tag=document.createElement("div");tag.className="tag";tag.textContent=i+" / "+window._pdf.numPages;const holder=document.createElement("div");holder.className="placeholder";holder.textContent="Página "+i;el.append(holder,tag);root.appendChild(el)}
- const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!e.target.dataset.rendered)render(e.target,Number(e.target.dataset.page))}),{rootMargin:"1200px"});
- document.querySelectorAll(".page").forEach(e=>io.observe(e));
-}catch(err){root.innerHTML='<div class="error"><b>Error cargando el PDF.</b><br>'+String(err.message||err)+'</div>'}})();
-window.addEventListener("scroll",()=>{const h=document.documentElement.scrollHeight-innerHeight;document.getElementById("bar").style.width=(h?scrollY/h*100:0)+"%"});
-function openQR(){document.getElementById("modal").classList.add("open");document.getElementById("qr").innerHTML="";new QRCode(document.getElementById("qr"),{text:location.href,width:200,height:200})}
+function openQR(){const m=document.getElementById("modal");m.classList.add("open");const q=document.getElementById("qr");q.innerHTML="";new QRCode(q,{text:location.href,width:200,height:200});}
 function closeQR(){document.getElementById("modal").classList.remove("open")}
+window.addEventListener("scroll",()=>{const h=document.documentElement.scrollHeight-innerHeight;document.getElementById("bar").style.width=(h?scrollY/h*100:0)+"%"});
+start();
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </body></html>
